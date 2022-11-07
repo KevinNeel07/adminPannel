@@ -1,0 +1,153 @@
+ if (e.target.name = 'destination') {
+            let desDetails = data.forEach((val) => {
+
+                if(val.Destination){}
+
+                if (val.Destination.indexOf(e.target.value) > -1) {
+                    console.log(val.Destination.indexOf(e.target.value) > -1);
+                }
+
+            });
+            console.log(desDetails);
+            // let currDestination = desDetails.filter((desVal) => desVal == e.target.value)
+            // console.log(currDestination);
+        }
+
+
+
+
+ if (name == 'destination') {
+            setQuerry(value);
+            if(desName != []){
+                let desDetails = desName.filter((val) => val.Destination.toLowerCase().indexOf(querry.toLowerCase()) > -1);
+                setDesName(...desDetails);
+                console.log(desDetails);
+            }else{
+                let desDetails = data.filter((val) => val.Destination.toLowerCase().indexOf(querry.toLowerCase()) > -1);
+                setDesName(...desDetails);
+                console.log(desDetails);
+            }
+
+        } else if (name == 'location') {
+            setLocQuerry(value);
+            if(desName != ''){
+                console.log('Working');
+                console.log(desName);
+                // let locDetails = desName.filter((val) => val.Location.toLowerCase().indexOf(locquerry.toLowerCase()) > -1);
+                //  setDesName([...locDetails]);
+                // console.log(locDetails);
+            }else{
+                let locDetails = data.filter((val) => val.Location.toLowerCase().indexOf(locquerry.toLowerCase()) > -1);
+                setDesName([...locDetails]);
+                console.log(desName);
+            }
+         
+        }
+    }
+
+
+
+     {
+                                desName != '' && desName.length == 1 ? desName.Person.forEach((person)=>{
+                                    <option value={person.count}>{person.count} Person</option>
+                                }) : ''
+                            }
+
+
+
+
+
+  if (name == 'destination') {
+            setQuerry(value);
+            if (desName != '') {
+                let desDetails = desName.filter((val) => val.Destination.toLowerCase().indexOf(querry.toLowerCase()) > -1);
+                setDesName([...desDetails]);
+                console.log(desName);
+            } else {
+                let desDetails = data.filter((val) => val.Destination.toLowerCase().indexOf(querry.toLowerCase()) > -1);
+                setDesName(desDetails);
+                console.log(desName);
+            }
+
+        } else if (name == 'location') {
+            setLocQuerry(value);
+            if (desName != '') {
+                console.log(locquerry);
+                console.log('Working');
+                let locDetails = desName.filter((val) => val.Location.toLowerCase().includes(locquerry.toLowerCase()));
+                setDesName([...locDetails]);
+                console.log(locDetails);
+            } else {
+                console.log(locquerry);
+                let locDetails = data.filter((val) => val.Location.toLowerCase().includes(locquerry.toLowerCase()));
+                setDesName(locDetails);
+                console.log(locDetails);
+            }
+
+        }
+
+
+
+
+
+
+ if(name == 'location'){
+            setLocQuerry(value);
+        }else if(name == 'destination'){
+            setQuerry(value)
+        }
+
+        if(querry != '' && locquerry != ''){
+            console.log(querry, locquerry);
+            let locDetails = data.filter((val) => {
+                val.Location.toLowerCase().includes(locquerry.toLowerCase())
+            });
+            let desDetails = data.filter((val) => {
+                val.Destination.toLowerCase().includes(querry.toLowerCase())
+            });
+
+            console.log(desDetails);
+
+            setDesName(locDetails);
+            console.log(locDetails);
+        }
+
+        if (desName.length == 1) {
+            console.log(desName.Person);
+        } else {
+            console.log(desName.length);
+        }
+    }
+
+
+
+
+    newData.Person.forEach((person)=>{
+                            <>
+                            <option value={person.count}>kljn{person.count}</option>
+                            <h1>{person.count}</h1>
+                            </>
+                        })
+
+
+                      // payment_method_types: ['card'],
+            // shipping_address_collection: {
+            //     allowed_countries: ['US', 'CA'],
+            // },
+            // phone_number_collection: {
+            //     enabled: true,
+            // },
+
+
+
+
+
+            app.use('/user', user);
+app.use('/booking', booking);
+app.use("/booking/webhook", express.raw({ type: "*/*" }));
+
+
+
+
+
+onClick={e => { setUserVisible(prevState => (prevState, true)); setOrderVisible((prevState => (prevState, false))); setBookingVisible((prevState => (prevState, false)));

@@ -1,0 +1,46 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+   
+}
+
+
+.logo{
+    display: flex;
+    width: 7.5%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo a{
+    font-weight: 600;
+    font-size: 25px;
+    margin-top: 6px;
+}
+
+
+.nav-link{
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link:hover{
+    color: #34A5E4;
+}
+
+.logo a{
+    font-weight: 600;
+}
+
+.links{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.AccountLink a{
+    border: 2px solid #ffffff75;
+    padding: 15px 15px;
+}

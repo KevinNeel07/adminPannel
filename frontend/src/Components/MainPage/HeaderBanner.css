@@ -1,0 +1,93 @@
+.banner{
+    color: white;
+    display: flex;
+    height: 89vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.heading{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.heading h1{
+    font-size: 5.5em;
+    width: 50%;
+}
+
+.heading p{
+    font-size: 22px;
+    font-weight: lighter;
+    width: 33%;
+}
+
+.searchForm{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchInput{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    padding: 20px;
+    background-color: white;
+    margin-right: 30px;
+    border-radius: 5px;
+}
+
+#searchButton{
+    background-color: #34A5E4;
+    color: white;
+    border: none;
+    padding: 19px 60px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#payButton{
+    background-color: #2ee231;
+    color: white;
+    border: none;
+    padding: 19px 60px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#searchDestination{
+    width: 30%;
+}
+
+#CLocation{
+    width: 13%;
+}
+
+.line{
+    padding: 10px 1px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.077);
+}
+
+
+
+input{
+    border: none;
+    outline: none;
+}
+
+img{
+    height: 1%;
+}
