@@ -1,11 +1,23 @@
 import Stripe from 'stripe';
-const stripe = new Stripe("sk_test_51LrHbYSFMNoj0bcHAaYfhUnP1G5F3qT6oHxHIxMYxDbszk4hSC4XrRi8aUZKJuHRH9TiPV2XcFdvSSvWCB7KMxkJ00F3zN5SDF");
+const stripe = new Stripe("sk_test_51LrHbYSFMNoj0bcHweITqgYUvTeBy6xuiPbNwQJDI9MwEgLR0rf4sAB3udFqBn3b8ALit30nouFAzKtg1WRQ1C9d0085RdLsMJ");
 
 import Booking from '../models/Booking.js'
 import Travel from '../models/Travel.js'
 
+export const get_Customer = async (req, res) => {
+    try {
+        const customer = await stripe.customers.retrieve(
+            'cus_MlhXMXUOF6DjDG'
+        );
+        console.log(customer);
+        res.send(customer);
 
-export const stripe_checkOut =  async(req, res) => {
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const stripe_checkOut = async (req, res) => {
     try {
         const data = req.body;
         const validPlace = await Travel.findOne({ id: data.placeDetails.id }).lean();
@@ -45,7 +57,7 @@ export const stripe_checkOut =  async(req, res) => {
     }
 };
 
-const createCustomer = async(customer, data)=>{
+const createCustomer = async (customer, data) => {
     try {
         let date = new Date();
         console.log(date.toUTCString());
@@ -61,13 +73,13 @@ const createCustomer = async(customer, data)=>{
         let savedData = await saveData.save();
         console.log(savedData);
     } catch (error) {
-        
+
     }
 }
 
 let endpointSecret = "whsec_f7daa47b1abf54c20899b60f2766986909be34eb0253a3635282527045f39b32";
 
-export const webHook = async(req, res) => {
+export const webHook = async (req, res) => {
     const sig = req.headers['stripe-signature'];
     let data;
     let eventType;
@@ -81,7 +93,7 @@ export const webHook = async(req, res) => {
         if (eventType === "checkout.session.completed") {
             stripe.customers
                 .retrieve(data.customer).then((customer) => {
-                  createCustomer(customer, data)
+                    createCustomer(customer, data)
                 }).catch((err) => console.log(err.message))
         }
 

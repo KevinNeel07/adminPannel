@@ -1,10 +1,17 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8000';
+const API = axios.create({baseURL:'http://localhost:8000'})
 
-export const getDestination = ()=> axios.get(`${url}/`);
+API.interceptors.request.use((req)=>{
+    if(localStorage.getItem('profile')){
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
+    }
+    return req;
+})
 
-export const sendPaymentDetails = (placeDetails, priceDetails)=> axios.post(`${url}/booking/create-checkout-session`,{placeDetails, priceDetails}).then((res)=>{
+export const getDestination = ()=> API.get('/');
+
+export const sendPaymentDetails = (placeDetails, priceDetails)=> API.post(`/booking/create-checkout-session`,{placeDetails, priceDetails}).then((res)=>{
     if(res.data.url){
         window.location.href = res.data.url
     }
@@ -12,8 +19,8 @@ export const sendPaymentDetails = (placeDetails, priceDetails)=> axios.post(`${u
     console.log(error.message);
 });
 
-export const userSignUp = (userData) => axios.post(`${url}/user/signUp`, userData)
+export const userSignUp = (userData) => API.post(`/user/signUp`, userData)
 
-export const userSignIn = (loginData)=> axios.post(`${url}/user/signIn`, loginData)
-export const getUser = ()=> axios.get(`${url}/admin/userStats`)
-export const getAllUser = ()=> axios.get(`${url}/admin/usersDetails`)
+export const userSignIn = (loginData)=> API.post(`/user/signIn`, loginData)
+export const getUser = ()=> API.get(`/admin/userStats`)
+export const getAllUser = ()=> API.get(`/admin/usersDetails`)

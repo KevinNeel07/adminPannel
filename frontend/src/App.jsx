@@ -9,6 +9,9 @@ import Admin from './Components/Admin/Admin';
 import Navbar from './Components/MainPage/Navbar';
 import Summary from './Components/Admin/Summary';
 import UserDetailsStats from './Components/DetailsStats/UserDetailsStats';
+import Order from './Components/Admin/Order';
+import Income from './Components/Admin/Income';
+import UserProfile from './Components/UserProfile/UserProfile';
 
 const App = () => {
 
@@ -21,7 +24,10 @@ const App = () => {
         <Route  path='/admin' element={<Admin />}>
           <Route path='summary' element={<Summary />} />
           <Route path='userDetials' element={<UserDetailsStats />} />
+          <Route path='orders' element={<Order />} />
+          <Route path='income' element={<Income />} />
         </Route>
+        <Route exact path='/userProfile/:id' element={<UserProfile />} />
       </Routes>
 
     </>

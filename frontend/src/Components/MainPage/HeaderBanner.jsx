@@ -17,13 +17,14 @@ const HeaderBanner = () => {
 
     const [visibleButton, setVisibleButton] = useState(false)
     const [priceDetails, setpriceDetails] = useState(0);
+    // const [selectVal, setSelectVal] = useState(0)
 
     const [personDetails, setPersonDetails] = useState({});
     const dispatch = useDispatch();
 
 
     const data = useSelector((state) => state.destinationAPI);
-    const user = useSelector((state) => state.user);
+    const user = JSON.parse(localStorage.getItem('profile'));
     console.log(user);
 
     useEffect(() => {
@@ -38,32 +39,39 @@ const HeaderBanner = () => {
 
     function Search(e) {
         e.preventDefault();
-        console.log(place.Location);
-        console.log(data, 'data');
         let fetchedData = data.filter((val) => val.Location.toLowerCase() == place.Location.toLowerCase() && val.Destination.toLowerCase() == place.Destination.toLowerCase())
-        console.log(fetchedData, 'fetchedData');
         let newObj = fetchedData[0]
         setPersonDetails(prev => ({ ...prev, ...newObj }))
+        // setSelectVal(prvState => (prvState, newObj.Person[0].count))
+
     }
 
     function payButton(e) {
-        const index = e.target.selectedIndex;
-        const el = e.target.childNodes[index]
-        const id = el.getAttribute('id');
-        const findPrice = personDetails.Person.find((val) => val._id == id);
-        setpriceDetails(findPrice)
-        setVisibleButton(true)
+        let selectedValue = e.target.value;
+        if(selectedValue != 'Select Person'){
+            console.log('OnChange Calling');
+            const index = e.target.selectedIndex;
+            const el = e.target.childNodes[index]
+            const id = el.getAttribute('id');
+            const findPrice = personDetails.Person.find((val) => val._id == id);
+            setpriceDetails(findPrice)
+            setVisibleButton(prvstate => (prvstate, true));
+        }else{
+            setVisibleButton(prvstate => (prvstate, false));
+        }
     }
 
-    function payAmount(){
+    function payAmount() {
 
-        if(user.id != ''){
-            dispatch(sendPaymentDetails(personDetails,priceDetails));
-        }else{
+        if (!user) {
             navigate('/createAccount')
+        } else {
+            dispatch(sendPaymentDetails(personDetails, priceDetails));
         }
 
+
     }
+    console.log(user);
     return (
         <>
             <div className="banner">
@@ -80,19 +88,23 @@ const HeaderBanner = () => {
                         <input type="text" id='CLocation' onChange={getValues} name='Location' value={place.Location} placeholder='C.Location' />
                         <div className="line"></div>
 
-                        <select onChange={payButton} name="person" id="" placeholder='Location'>
-                            {
-                                Object.keys(personDetails).length != 0 ? personDetails.Person.map((person) => (
-                                    <option id={person._id} key={person._id} value={person.count}>{person.count} Persons</option>
-                                )) : ''
-                            }
-                        </select>
+
+                        {
+                            Object.keys(personDetails).length != 0 ?
+                                <select onChange={payButton} name="person" id="">
+                                    <option>Select Person</option>
+                                {
+                                    personDetails.Person.map((person) => (
+                                        <option id={person._id} key={person._id} value={person.count}>{person.count} Persons</option>
+                                    ))}
+                                </select> : ''
+
+                        }
                     </div>
-                    
 
                     <button onClick={Search} type='submit' id='searchButton'>Search</button>
                     {
-                        visibleButton ?<button onClick={payAmount} id='payButton' type='submit'>Pay ${priceDetails.price}</button>: null
+                        visibleButton ? <button onClick={payAmount} id='payButton' type='submit'>Pay ${priceDetails.price}</button> : null
                     }
                 </div>
             </div>

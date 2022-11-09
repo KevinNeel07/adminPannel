@@ -19,6 +19,7 @@
 .heading h1{
     font-size: 5.5em;
     width: 50%;
+    color: white;
 }
 
 .heading p{
@@ -54,10 +55,11 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 15px;
 }
 
 #payButton{
-    background-color: #2ee231;
+    background-color: #007101;
     color: white;
     border: none;
     padding: 19px 60px;

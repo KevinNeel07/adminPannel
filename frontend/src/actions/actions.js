@@ -26,8 +26,10 @@ export const sendPaymentDetails = (placeDetails, priceDetails) => async (dispatc
 
 export const signUp = (userData,navigate) => async(dispatch)=>{
     try {
+        console.log(userData);
         const {data} = await api.userSignUp(userData);
-        dispatch({type: 'SIGNUP_USER', payload: data})
+        console.log(data);
+        dispatch({type: 'AUTH', data})
         navigate('/')
     } catch (error) {
         console.log(error);
@@ -37,7 +39,7 @@ export const signUp = (userData,navigate) => async(dispatch)=>{
 export const signIn = (userData,navigate) => async(dispatch)=>{
     try {
         const {data} = await api.userSignIn(userData);
-        dispatch({type: 'LOGIN_USER', payload: data})
+        dispatch({type: 'AUTH',  data})
         navigate('/')
     } catch (error) {
         console.log(error);

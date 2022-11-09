@@ -19,10 +19,6 @@ const Admin = () => {
 
     console.log('Admin component');
 
-    const [userVisible, setUserVisible] = useState(false);
-    const [orderVisible, setOrderVisible] = useState(false);
-    const [bookingVisible, setBookingVisible] = useState(false);
-
     return (
         <>
             <div className="container">
@@ -31,16 +27,12 @@ const Admin = () => {
                     <Link className="card userCard" to='/admin/userDetials'>
                         <User  />
                     </Link>
-                    <Link className="card orderCard" onClick={e => { setOrderVisible(prevState => (prevState, true)); setBookingVisible((prevState => (prevState, false)));setUserVisible((prevState => (prevState, false))); }}>
-                        <Order />
+                    {/* <Link className="card userCard" to='/admin/orders'>
+                        <Order  />
                     </Link>
-                    <Link className="card incomeCard" onClick={e => { setBookingVisible(prevState => (prevState, true));setUserVisible((prevState => (prevState, false))); setOrderVisible((prevState => (prevState, false)));  }}>
-                        <Income />
-                    </Link>
-                </div>
-
-                <div className="details_container">
-                   {userVisible== true ? <UserDetailsStats /> : ''}
+                    <Link className="card userCard" to='/admin/income'>
+                        <Income  />
+                    </Link> */}
                 </div>
                 <Outlet />
             </div>
@@ -51,4 +43,4 @@ const Admin = () => {
     )
 }
 
-export default Admin;
+export default React.memo(Admin);

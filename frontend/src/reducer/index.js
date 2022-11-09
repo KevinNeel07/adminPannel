@@ -5,5 +5,5 @@ import user from './user'
 
 export default combineReducers({
     destinationAPI,
-    user
+    user,
 })

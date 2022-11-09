@@ -2,6 +2,9 @@ import express from 'express';
 const app = express();
 import cors from 'cors'
 import session from 'express-session'
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 import Travel from './models/Travel.js'
 

@@ -1,10 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
 import './Navbar.css';
 import Union_Logo from '../../Images/Union.png'
 
 const Navbar = () => {
+
+  const user =  JSON.parse(localStorage.getItem('profile'));
+
+  console.log(user);
+
   return (
     <>
     <nav>
@@ -18,8 +25,9 @@ const Navbar = () => {
       <Link className="nav-link" to='/why_besnik'>why besnik</Link>
       <Link className="nav-link" to='/contact'>contact</Link>
     </div>
+
     <div className="AccountLink">
-      <Link className="nav-link" to='/createAccount'>Create Account</Link>
+    {user ?  <Link className="nav-link" to={`/userProfile/${user.result._id}`}>{user.result.name}</Link> :  <Link className="nav-link" to='/createAccount'>Create Account</Link>}
     </div>
     </nav>
     </>
