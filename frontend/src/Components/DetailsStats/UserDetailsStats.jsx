@@ -30,11 +30,11 @@ const UserDetailsStats = () => {
     <>
       <h1>Users Details</h1>
       <div className="user_Container">
-        {/* {users.forEach((user) => {
+        { users ? users.forEach((user) => {
           <>
           <h1>{user.name}</h1>
           </>
-        })} */}
+        }) : <h1>No users available</h1>}
       </div>
     </>
   )

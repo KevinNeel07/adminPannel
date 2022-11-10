@@ -32,7 +32,7 @@ admin.get('/userStats', async(req,res)=>{
         }
 
         let sortedUsers = users.sort(compare);
-        console.log(sortedUsers);
+        console.log(users);
         res.send(sortedUsers)
     } catch (error) {
         console.log(error);

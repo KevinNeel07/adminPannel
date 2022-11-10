@@ -66,7 +66,7 @@ const HeaderBanner = () => {
         if (!user) {
             navigate('/createAccount')
         } else {
-            dispatch(sendPaymentDetails(personDetails, priceDetails));
+            dispatch(sendPaymentDetails(user,personDetails, priceDetails));
         }
 
 

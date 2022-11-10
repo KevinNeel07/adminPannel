@@ -11,11 +11,17 @@ const User = () => {
     const [users, setUsers] = useState([]);
     const [userPerc, setUserPerc] = useState([]);
     const dispatch = useDispatch()
-    // const userData = useSelector((state)=> state.user);
 
     useEffect(() => {
         async function fetchedData() {
+            console.log('working');
             let userData = await axios.get('http://localhost:8000/admin/userStats');
+            console.log(userData);
+
+            if(userData.data < 1){
+                userData.data[1].total = { _id: 10, total: 0 };
+            }
+
             let newData = ((userData.data[0].total - userData.data[1].total) / userData.data[1].total) * 100;
             setUsers(userData.data)
             setUserPerc(newData);

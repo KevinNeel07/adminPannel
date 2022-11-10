@@ -12,11 +12,11 @@ export const getDestination = () => async (dispatch) => {
     }
 }
 
-export const sendPaymentDetails = (placeDetails, priceDetails) => async (dispatch) => {
+export const sendPaymentDetails = (user,placeDetails, priceDetails) => async (dispatch) => {
     try {
         console.log(placeDetails);
         console.log(priceDetails);
-        const { data } = await api.sendPaymentDetails(placeDetails,
+        const { data } = await api.sendPaymentDetails(user,placeDetails,
             priceDetails);
         console.log(data);
     } catch (error) {

@@ -11,7 +11,7 @@ API.interceptors.request.use((req)=>{
 
 export const getDestination = ()=> API.get('/');
 
-export const sendPaymentDetails = (placeDetails, priceDetails)=> API.post(`/booking/create-checkout-session`,{placeDetails, priceDetails}).then((res)=>{
+export const sendPaymentDetails = (user,placeDetails, priceDetails)=> API.post(`/booking/create-checkout-session`,{user,placeDetails, priceDetails}).then((res)=>{
     if(res.data.url){
         window.location.href = res.data.url
     }
